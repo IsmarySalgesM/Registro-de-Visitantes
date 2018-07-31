@@ -34,6 +34,7 @@ firebase.database().ref('/zonaIf')
      <td>   ${sends[1].recinto}</td>
      <td>   ${sends[1].fecha}  </td>
      <td>   ${sends[1].hora}</td>
+     
      <i class="fas fa-sign-out-alt" data-post="${ 
   sends[0]
 }" onclick="deletePost(event)"></i>
@@ -70,6 +71,7 @@ messaging.requestPermission()
     console.log('Se han aceptado las notificaciones');
     return messaging.getToken();
   })
+  
   .the(function(token) {
     if (token) { 
       guardarToken(token);
