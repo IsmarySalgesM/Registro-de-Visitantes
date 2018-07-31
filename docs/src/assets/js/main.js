@@ -1,9 +1,11 @@
 const form = document.getElementById('formVisit'); // Obtenemos la referencia al formulario
 const infoVisit = document.getElementById('infoVisit');
 
+// NUEVO PARA LA CAMARA
 let canvasImg = document.getElementById('canvas');
 var dataBase64 = canvasImg.toDataURL();
-// console.log(dataBase64);
+console.log(dataBase64);
+//
 
 if (form) {
   // Si existe nuestro elemento en memoria este se quedara escuchando al evento submit del formulario
@@ -81,6 +83,36 @@ infoVisit.addEventListener('click', event => {
       });
   }
 
+  // aqui evaluamos la ruta y se imprime en HTML
+
+  firebase
+    .database()
+    .ref('/zonaIf')
+    .once('value', function datosIf(send) {
+      tblUsersList.innerHTML = ''; // se evita la repeticion de la visita
+      firebase
+        .database()
+        .ref('/zonaIf')
+        .once('value', function datosIf(send) {
+          tblUsersList.innerHTML = ''; // se evita la repeticion de la visita
+          Object.entries(send.val()).forEach(sends => {
+            tblUsersList.innerHTML += `
+            <tbody>
+    <tr>
+      <td> ${sends[1].rut}</td>
+      <td> ${sends[1].nombre}</td>
+      <td> ${sends[1].apellido}</td>
+      <td> ${sends[1].recinto}</td>
+      <td> ${sends[1].fecha}</td>
+      <td> ${sends[1].hora}</td>
+      <td><img src="${img}" alt="algo"></td>
+       
+            <i class="fas fa-sign-out-alt" data-post="${
+  sends[0]
+}" onclick="deletePost(event)"></i></tr></tbody> `;
+          });
+        });
+    });
   // aqui evaluamos la ruta y se imprime en HTML
 });
 

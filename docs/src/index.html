@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +7,14 @@
   <title>Records Web</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
   <link rel="stylesheet" href="animate.min.css">
   <link rel="stylesheet" href="../src/assets/css/media.css">
   <link rel="stylesheet" href="../src/assets/css/style.css">
-
   <body>
-
     <!-- Empieza el Navbar  -->
-    
     <header id="menuDesp">
       <div class="pos-f-t">
         <nav id="menuNav" class="navbar navbar-dark" style="background-color: rgb(3, 12, 11);">
@@ -38,23 +33,18 @@
             <a onclick="registrarVisitas()" class="nav-link text-secondary" href="#">
               <i class="fas fa-users"></i> Registrar Visitas</a>
             <a onclick="registrosTotales()" class="nav-link text-secondary" href="#">
-              <i class="fas fa-book-open"></i> Registros Totales</a>
+              <i class="fas fa-book-open"></i> Administrador</a>
           </div>
         </nav>
       </div>
     </header>
     
-    <!-- Termina el Navbar -->
- 
+    
     <!-- Primera pantalla -->
     <div id="screenStart">
-      <img id="logo" src="assets/img/logo.png" class="animated pulse infinite img-fluid col-lg-6 col-centrada" alt="Responsive image">
-      <button  id="btnvisit" type="button" class="btn btn-light btnstart">VISITANTE</button>
-      <button id="btnadmin" type="button" class="btn btn-light btnstart">ADMINISTRADOR</button>  
+      <button id="btnvisit" type="button" class="btn btn-light btnstart">VISITANTE</button> 
     </div>
-
     <!-- Empieza el formulario -->
-
     <div id="screenRegister" class="container-fluid">
       <div class="row">
         <div class="col-8">
@@ -102,39 +92,38 @@
             <button type="button" class="btn btn-secondary btn-lg btn-block visit" id="infoVisit">Registrar visita</button>
             </div>
         <!-- Termina Empresa donde visita -->
-          </form> 
-          </div>
-          <div class="col-4">
+          
+          </form>    
+        </div>
+        <div class="col-4">
             <video id="video"></video>
-
             <button id="startbutton">Take photo</button>
-            
             <canvas id="canvas"></canvas>
-          </div>
         </div>
       </div>
-
-  <div id="screenVisit" class="container-fluid">
-    <table class="table" id="tblUsersList">
-      <thead class="thead-dark" border="1">
-        <tr>
-          <th scope="col">#ID</th>
-          <th scope="col">RUT</th>
-          <th scope="col">NOMBRE</th>
-          <th scope="col">APELLIDO</th>
-          <th scope="col">FECHA DE ENTRADA</th>
-          <th scope="col">HORA DE ENTRADA</th>
-          <th scope="col">SALIDA</th>
-        </tr>
-      </thead>
-    </table>
-  </div> 
-
-    <!-- script section -->
-    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
+      <!-- Termina formulario -->
+    </div>
+    <div id="screenVisit" class="container-fluid">
+      <table class="table" id="tblUsersList">
+        <thead class="thead-dark" border="1">
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">RUT</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">APELLIDO</th>
+            <th scope="col">FECHA DE ENTRADA</th>
+            <th scope="col">HORA DE ENTRADA</th>
+            <th scope="col">SALIDA</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    
+      <!-- script section -->
+      <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
           apiKey: "AIzaSyC0LlzqkMIv3MmGNrmIm78iaEi0Ejq802o",
           authDomain: "registrodevisitantes-76273.firebaseapp.com",
           databaseURL: "https://registrodevisitantes-76273.firebaseio.com",
@@ -143,12 +132,17 @@
           messagingSenderId: "565701083065"
         };
         firebase.initializeApp(config);
-    </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/main.js"></script> 
-    <script src= "assets/js/photo.js"></script>
+      </script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+        <script src="https://fcm.googleapis.com/fcm/send --header "Authorization:key=[AIzaSyCrZofiRkAn59HJRwjSLfBYv3Rzfo1b57I]" --header "Content-Type:application/json" -d '{ "notification": { "title": "Hey amigo, lee esto!", "body": "Felicidades!! Has recibido una gloriosa notificación", "icon": "/notificaciones/images/user-icon.png" }, "to" : "[AAAAg7Zpf7k:APA91bHmslJHG9qdvcJd4qu56M7R_RFGVVawYb1QL3XimTc1jJHha7BBANZmdMFcSBaK8BOfQTYV7gMWtMKTFRR2BGKArAir9a0zovw-05yr4tvzBF249rdPOE0WWindBAqqFsImK1yYbdyHqam70rc1NoJKpjyVLQ]" }"></script> 
+        <script src="https://smtpjs.com/v2/smtp.js"></script>
+        <script src="assets/js/app.js"></script>
+      <script src="assets/js/main.js"></script>
+      <script src="assets/js/photo.js"></script>
   </body>
 </html>

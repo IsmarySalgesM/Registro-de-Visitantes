@@ -16,10 +16,6 @@
   margin-top: 5%;
 }
 
-#btnVisit {
-  background-color: blueviolet;
-}
-
 #infoVisit {
   margin-top: 2%;
 }
@@ -48,19 +44,8 @@
   z-index: -10;
 }
 
-
-#logo {
-  position: absolute;
-  width: 60%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
-
 #screenStart {
-  /*background-image: url('../img/logo.png');*/
+  background-image: url('../img/logo.png');
   background-position-x: center;
   background-position-y: center;
   background-repeat: no-repeat; 
@@ -87,11 +72,13 @@ header {
 }
 
 .btnstart {
-  width: 25%;
-  height: 10%;
-  border-radius: 50%;
+  width: 20%;
+  height: 5%;
+  border-radius: 15%;
   position: relative;
   top: 60%;
-  margin-left: 17%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 130%;
 }
