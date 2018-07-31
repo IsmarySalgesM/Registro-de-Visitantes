@@ -4,9 +4,8 @@ const infoVisit = document.getElementById('infoVisit');
 // NUEVO PARA LA CAMARA
 let canvasImg = document.getElementById('canvas');
 var dataBase64 = canvasImg.toDataURL();
-console.log(dataBase64)
+console.log(dataBase64);
 //
-
 
 if (form) {
   // Si existe nuestro elemento en memoria este se quedara escuchando al evento submit del formulario
@@ -61,21 +60,21 @@ infoVisit.addEventListener('click', event => {
       .ref('zonaIf')
       .push(infoUsuarioIf) // Hacemos referencia el nombre del objeto que contendrá nuestros registros y empujamos los nuevos envios de datos
       .then(function() {
-        //alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
+        // alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
         console.info(Email);
       
         Email.send('la.laboratoria@example.com',
-        receiverEmail,
-        'Visitante',
-        'Hola, tiene un nuevo visitante :' + infoUsuarioIf.nombre + ' ' + infoUsuarioIf.apellido,
-        {token: 'f92c06af-db41-408f-87f2-b2190fa2bc84'
-        }); 
-         alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
-         alert('mensaje guardado'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
+          receiverEmail,
+          'Visitante',
+          'Hola, tiene un nuevo visitante :' + infoUsuarioIf.nombre + ' ' + infoUsuarioIf.apellido,
+          {token: 'f92c06af-db41-408f-87f2-b2190fa2bc84'
+          }); 
+        alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
+        alert('mensaje guardado'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
       })
-        .catch(function () {
-          alert('No fue posible guardar su selección'); // En caso de ocurrir un error le mostramos al usuario que ocurrió un error.
-        });
+      .catch(function() {
+        alert('No fue posible guardar su selección'); // En caso de ocurrir un error le mostramos al usuario que ocurrió un error.
+      });
   } 
             
   // aqui evaluamos la ruta y se imprime en HTML
@@ -84,11 +83,11 @@ infoVisit.addEventListener('click', event => {
     .database()
     .ref('/zonaIf')
     .once('value', function datosIf(send) {
-      pruebaImpresion.innerHTML = ""; // se evita la repeticion de la visita
+      pruebaImpresion.innerHTML = ''; // se evita la repeticion de la visita
       firebase.database().ref('/zonaIf').once('value', function datosIf(send) {
-            pruebaImpresion.innerHTML = " "; // se evita la repeticion de la visita
-            Object.entries(send.val()).forEach(sends => {
-              pruebaImpresion.innerHTML += `<div>
+        pruebaImpresion.innerHTML = ''; // se evita la repeticion de la visita
+        Object.entries(send.val()).forEach(sends => {
+          pruebaImpresion.innerHTML += `<div>
             ${sends[1].rut}
             ${sends[1].nombre}
             ${sends[1].apellido}
@@ -96,12 +95,12 @@ infoVisit.addEventListener('click', event => {
             ${sends[1].fecha}  
             ${sends[1].hora}        
             <i class="fas fa-sign-out-alt" data-post="${sends[0]}" onclick="deletePost(event)"></i></div>`;
-            });
-          });
         });
-      // aqui evaluamos la ruta y se imprime en HTML
+      });
     });
+  // aqui evaluamos la ruta y se imprime en HTML
 });
+
 
 const btnvisit = document.getElementById('btnvisit');
 const btnadmin = document.getElementById('btnadmin');
