@@ -89,11 +89,6 @@ infoVisit.addEventListener('click', event => {
     .database()
     .ref('/zonaIf')
     .once('value', function datosIf(send) {
-      tblUsersList.innerHTML = ''; // se evita la repeticion de la visita
-      firebase
-        .database()
-        .ref('/zonaIf')
-        .once('value', function datosIf(send) {
           tblUsersList.innerHTML = ''; // se evita la repeticion de la visita
           Object.entries(send.val()).forEach(sends => {
             tblUsersList.innerHTML += `
@@ -114,7 +109,7 @@ infoVisit.addEventListener('click', event => {
         });
     });
   // aqui evaluamos la ruta y se imprime en HTML
-});
+
 
 const btnvisit = document.getElementById('btnvisit');
 const btnadmin = document.getElementById('btnadmin');
