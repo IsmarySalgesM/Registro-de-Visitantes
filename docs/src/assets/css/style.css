@@ -15,3 +15,72 @@
 #formVisit {
   margin-top: 5%;
 }
+
+#btnVisit {
+  background-color: blueviolet;
+}
+
+#infoVisit {
+  margin-top: 2%;
+}
+
+#screenVisit {
+  display: none;
+}
+
+.nav {
+  z-index: 10;
+}
+
+#menuNav {
+  z-index: 10;
+}
+
+.menu_content {
+  z-index: 10;
+}
+
+#screenRegister {
+  z-index: 0;
+}
+
+.btn-datos {
+  z-index: -10;
+}
+
+#screenStart {
+  background-image: url('../img/logo.png');
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat; 
+  background-color: black;
+  height: 100%;
+}
+
+#screenRegister {
+  display: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  display: none;
+}
+
+.btnstart {
+  width: 25%;
+  height: 10%;
+  border-radius: 50%;
+  position: relative;
+  top: 60%;
+  margin-left: 17%;
+  font-size: 130%;
+}

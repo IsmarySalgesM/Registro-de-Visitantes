@@ -10,85 +10,101 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
     crossorigin="anonymous">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <link rel="stylesheet" href="animate.min.css">
   <link rel="stylesheet" href="../src/assets/css/media.css">
   <link rel="stylesheet" href="../src/assets/css/style.css">
 
   <body>
 
     <!-- Empieza el Navbar  -->
-    <div class="pos-f-t">
-      <nav class="navbar navbar-dark" style="background-color: rgb(3, 12, 11);">
-        <button onclick="toggleMenu()" class="navbar-toggler" type="button" aria-controls="navbarToggleExternalContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </nav>
-      <nav id="sideMenu" class="nav flex-column float-left menu  menu_closed" style="background-color: #FCFCFC;">
-        <div onclick="toggleMenu()" class="close_button text-secondary">
-          <span aria-hidden="true">&times;</span>
-        </div>
-        <div id="options_menu" class="menu_content">
-          <a class="nav-link active text-secondary" href="#">
-            <i class="fas fa-home"></i> Perfil</a>
-          <a class="nav-link text-secondary" href="#">
-            <i class="fas fa-users"></i> Registrar Visitas</a>
-          <a class="nav-link text-secondary" href="#">
-            <i class="fas fa-book-open"></i> Registros Totales</a>
-        </div>
-      </nav>
-    </div>
+    
+    <header id="menuDesp">
+      <div class="pos-f-t">
+        <nav id="menuNav" class="navbar navbar-dark" style="background-color: rgb(3, 12, 11);">
+          <button onclick="toggleMenu()" class="navbar-toggler" type="button" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+        <nav id="sideMenu" class="nav flex-column float-left menu menu_closed" style="background-color: #FCFCFC;">
+          <div onclick="toggleMenu()" class="close_button text-secondary">
+            <span aria-hidden="true">&times;</span>
+          </div>
+          <div id="options_menu" class="menu_content">
+            <a onclick="inicio()"class="nav-link active text-secondary" href="#">
+              <i class="fas fa-home"></i> Inicio</a>
+            <a onclick="registrarVisitas()" class="nav-link text-secondary" href="#">
+              <i class="fas fa-users"></i> Registrar Visitas</a>
+            <a onclick="registrosTotales()" class="nav-link text-secondary" href="#">
+              <i class="fas fa-book-open"></i> Registros Totales</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
     <!-- Termina el Navbar -->
+ 
+    <!-- Primera pantalla -->
+    <div id="screenStart">
+      <button id="btnvisit" type="button" class="animated pulse infinite btn btn-light btnstart">VISITANTE</button>
+      <button id="btnadmin" type="button" class="animated pulse infinite btn btn-light btnstart">ADMINISTRADOR</button>  
+    </div>
 
     <!-- Empieza el formulario -->
-    <form id="formVisit">
-      <!-- rut -->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button">Rut</button>
-        </div>
-        <input type="text" class="form-control" placeholder="" id="rut" aria-label="Example text with button addon" aria-describedby="button-addon1">
-      </div>
-      <!-- rut -->
-      <!-- Nombre -->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button">Nombre</button>
-        </div>
-        <input type="text" class="form-control" placeholder="" id="nombre" aria-label="Example text with button addon" aria-describedby="button-addon1">
-      </div>
-      <!--  -->
-      <!-- apellido -->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button">Apellido</button>
-        </div>
-        <input type="text" class="form-control" placeholder="" id="apellido" aria-label="Example text with button addon" aria-describedby="button-addon1">
-      </div>
-      <!-- Termino apellido -->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button" id="btn_email">E-mail</button>
-        </div>
-        <input type="text" class="form-control" placeholder="" id="user_email" aria-label="Example text with button addon" aria-describedby="button-addon1">
-      </div>
-      <!-- Empresa donde visita -->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputSelect">Zona If</label>
-        </div>
-        <select class="custom-select" id="zonaIfOptions">
-          <option selected>¿Que empresa va a visitar?</option>
-          <option value="Laboratoria">Laboratoria</option>
-          <option value="Aguas Lab">Aguas Lab</option>
-          <option value="Robotics">Robotics</option>
-        </select>
-      </div>
-      <!-- Termina Empresa donde visita -->
-      <button type="button" class="btn btn-secondary btn-lg btn-block visit" id="infoVisit">Registrar visita</button>
-    </form>
-    <!-- Termina formulario 
 
-    <div id="printInfoVisit"></div>-->
+    <div id="screenRegister" class="container-fluid">
+      <div class="row">
+        <div class="col-8">
+          <form id="formVisit">
+          <!-- rut -->
+            <div id="userRut" class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn-datos btn btn-outline-secondary" type="button">Rut</button>
+              </div>
+              <input type="text" class="form-control" placeholder="" id="rut" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+        <!-- rut -->
+        <!-- Nombre -->
+            <div id="userName" class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn-datos btn btn-outline-secondary" type="button">Nombre</button>
+              </div>
+              <input type="text" class="form-control" placeholder="" id="nombre" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+        <!-- apellido -->
+            <div id="userLastname" class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn-datos btn btn-outline-secondary" type="button">Apellido</button>
+              </div>
+              <input type="text" class="form-control" placeholder="" id="apellido" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+        <!-- Termino apellido -->
+            <div id="userEmail" class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn-datos btn btn-outline-secondary" type="button" id="btn_email">E-mail</button>
+              </div>
+              <input type="text" class="form-control" placeholder="" id="user_email" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+        <!-- Empresa donde visita -->
+            <div id="zonaIf" class="input-group mb-3">
+              <div class="input-group-prepend">
+              <label class="input-group-text" for="inputSelect">Zona If</label>
+            </div>
+            <select class="custom-select" id="zonaIfOptions">
+              <option selected>¿Que empresa va a visitar?</option>
+              <option value="Laboratoria">Laboratoria</option>
+              <option value="Aguas Lab">Aguas Lab</option>
+              <option value="Robotics">Robotics</option>
+            </select>
+            <button type="button" class="btn btn-secondary btn-lg btn-block visit" id="infoVisit">Registrar visita</button>
+            </div>
+        <!-- Termina Empresa donde visita -->
+          </form>    
+        </div>
+
+    <div id="printInfoVisit"></div>
 
     <table class="table" id="tblUsersList">
       <thead class="thead-dark" border="1">
@@ -108,13 +124,6 @@
     <video id="video"></video>
     <button id="startbutton">Take photo</button>
     <canvas id="canvas"></canvas>
-   <!-- ================================================== -->
-<div id= pruebaImpresion> </div>
-
-
-    <!-- BOTON PARA GUARDAR IMG -->
-    <button id="guardarImg"> Guardar IMG</button>
-
 
     <!-- script section -->
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
@@ -138,6 +147,6 @@
       crossorigin="anonymous"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/main.js"></script>
+        
   </body>
-
 </html>
