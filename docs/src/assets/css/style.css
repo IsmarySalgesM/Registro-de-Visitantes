@@ -1,3 +1,18 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  display: none;
+}
+
 #screenChooseCompany {
   display: none;
 }
@@ -13,7 +28,7 @@
 }
 
 #formVisit {
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
 #infoVisit {
@@ -50,29 +65,22 @@
   background-position-y: center;
   background-repeat: no-repeat; 
   background-color: black;
+  align-items: center;
   height: 100%;
 }
+
+.slide-in-fwd-center {
+	-webkit-animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 
 #screenRegister {
   display: none;
 }
 
-html {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-}
-
-header {
-  display: none;
-}
-
 .btnstart {
-  width: 20%;
+  width: 50%;
   height: 5%;
   border-radius: 15%;
   position: relative;
@@ -81,4 +89,14 @@ header {
   margin-left: auto;
   margin-right: auto;
   font-size: 130%;
+  font-family: 'Roboto', sans-serif;
+}
+
+#userEmail{
+  padding-top: 2%;
+}
+
+.encabezadotbl {
+  color: #FAFAFA;
+  font-size: 80%;
 }

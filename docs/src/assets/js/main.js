@@ -1,12 +1,5 @@
 const form = document.getElementById('formVisit'); // Obtenemos la referencia al formulario
 const infoVisit = document.getElementById('infoVisit');
-
-// NUEVO PARA LA CAMARA
-let canvasImg = document.getElementById('canvas');
-var dataBase64 = canvasImg.toDataURL();
-console.log(dataBase64);
-//
-
 if (form) {
   // Si existe nuestro elemento en memoria este se quedara escuchando al evento submit del formulario
   form.addEventListener('submit', formVisit); // Al momento de enviar el formulario, ejecuta la función "contactform"
@@ -21,7 +14,6 @@ infoVisit.addEventListener('click', event => {
   let apellido = document.getElementById('apellido');
   let receiverEmail = document.getElementById('user_email').value;
   console.info(user_email);
-
   // tabla
 
   // Se crea constructor para fecha
@@ -33,7 +25,7 @@ infoVisit.addEventListener('click', event => {
   var min = formatoFecha.getMinutes();
 
   fecha = day + '/' + month + '/' + year;
-  hora = hour + ':' + min;
+  hora = hour + ':' + min; 
   // Aqui se obtiene el valor del select
   let selectOptionsIf = document.getElementById('zonaIfOptions');
   selectOptionsIf.addEventListener('click', function() {
@@ -48,9 +40,8 @@ infoVisit.addEventListener('click', event => {
     rut: rut.value,
     nombre: nombre.value,
     apellido: apellido.value,
-    img: dataBase64 // aqui se agregaaaaa la camara en firebase
+  
   }; // Creamos un objecto con todos los elementos de nuestro formulario.
-
   saveContactForm(infoUsuarioIf); // Enviamos la información obtenida por el usuario a la función que se encargará de guardar la información en Firebase
   form.reset(); // Borramos todos los campos.
   // Nos informa si la informacion fue guardada correctamente en firebase
@@ -62,19 +53,13 @@ infoVisit.addEventListener('click', event => {
       .then(function() {
         // alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
         console.info(Email);
-
-        Email.send(
-          'la.laboratoria@example.com',
+      
+        Email.send('la.laboratoria@example.com',
           receiverEmail,
           'Visitante',
-          'Hola, tiene un nuevo visitante :' +
-            infoUsuarioIf.nombre +
-            ' ' +
-            infoUsuarioIf.apellido,
-          {
-            token: 'f92c06af-db41-408f-87f2-b2190fa2bc84'
-          }
-        );
+          'Hola, tiene un nuevo visitante :' + infoUsuarioIf.nombre + ' ' + infoUsuarioIf.apellido,
+          {token: 'f92c06af-db41-408f-87f2-b2190fa2bc84'
+          }); 
         alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
         alert('mensaje guardado'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
       })
@@ -82,34 +67,35 @@ infoVisit.addEventListener('click', event => {
         alert('No fue posible guardar su selección'); // En caso de ocurrir un error le mostramos al usuario que ocurrió un error.
       });
   }
-
+          
   // aqui evaluamos la ruta y se imprime en HTML
 
-  firebase
-    .database()
-    .ref('/zonaIf')
+  firebase.database().ref('/zonaIf')
     .once('value', function datosIf(send) {
+      tblUsersList.innerHTML = ''; // se evita la repeticion de la visita
+
+      // aqui evaluamos la ruta y se imprime en HTML
+
+      firebase
+        .database()
+        .ref('/zonaIf')
+        .once('value', function datosIf(send) {
           tblUsersList.innerHTML = ''; // se evita la repeticion de la visita
+
           Object.entries(send.val()).forEach(sends => {
-            tblUsersList.innerHTML += `
-            <tbody>
-    <tr>
-      <td> ${sends[1].rut}</td>
-      <td> ${sends[1].nombre}</td>
-      <td> ${sends[1].apellido}</td>
-      <td> ${sends[1].recinto}</td>
-      <td> ${sends[1].fecha}</td>
-      <td> ${sends[1].hora}</td>
-      <td><img src="${img}" alt="algo"></td>
-       
-            <i class="fas fa-sign-out-alt" data-post="${
-  sends[0]
-}" onclick="deletePost(event)"></i></tr></tbody> `;
+            tblUsersList.innerHTML += `  <tbody> <tr>
+       <td>  ${sends[1].rut}</td>
+       <td>   ${sends[1].nombre}</td>
+       <td>   ${sends[1].apellido}</td>
+       <td>   ${sends[1].recinto}</td>
+       <td>   ${sends[1].fecha}  </td>
+       <td>   ${sends[1].hora}</td>
+       </tbody>
+    </tr>`; 
           });
         });
     });
-  // aqui evaluamos la ruta y se imprime en HTML
-
+});
 
 const btnvisit = document.getElementById('btnvisit');
 const btnadmin = document.getElementById('btnadmin');
@@ -118,12 +104,5 @@ btnvisit.addEventListener('click', () => {
   screenRegister.style.display = 'block';
   screenStart.style.display = 'none';
   screenVisit.style.display = 'none';
-  menuDesp.style.display = 'block';
-});
-
-btnadmin.addEventListener('click', () => {
-  screenRegister.style.display = 'none';
-  screenStart.style.display = 'none';
-  screenVisit.style.display = 'block';
   menuDesp.style.display = 'block';
 });
