@@ -100,22 +100,21 @@
 
   <!-- Visit administrador -->
   <section id="screenVisit">
-   
-          <div class="table-responsive-sm">
-            <table class="table" id="tblUsersList">
-              <thead class="thead-dark">
-                <tr>
-                  <th class="encabezadotbl" scope="col">RUT</th>
-                  <th class="encabezadotbl" scope="col">NOMBRE</th>
-                  <th class="encabezadotbl" scope="col">APELLIDO</th>
-                  <th class="encabezadotbl" scope="col">FECHA DE ENTRADA</th>
-                  <th class="encabezadotbl" scope="col">HORA DE ENTRADA</th>
-                </tr>
-              </thead>
-            </table>
-     
-       
-      
+    <div class="table-responsive-lg">
+    <table class="table" >
+      <thead class="thead-dark">
+        <tr>
+          <th class="encabezadotbl" scope="col">Rut</th>
+          <th class="encabezadotbl" scope="col">Nombre</th>
+          <th class="encabezadotbl" scope="col">Apellido</th>
+          <th class="encabezadotbl" scope="col">Recinto</th>
+          <th class="encabezadotbl" scope="col">Fecha de entrada</th>
+          <th class="encabezadotbl" scope="col">Hora de Entrada</th>
+        </tr>
+      </thead>
+      <tbody id="tblUsersList"></tbody>
+    </table>
+   </div>
   </section>
   <!-- script section -->
   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>

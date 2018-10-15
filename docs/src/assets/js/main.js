@@ -25,10 +25,10 @@ infoVisit.addEventListener('click', event => {
   var min = formatoFecha.getMinutes();
 
   fecha = day + '/' + month + '/' + year;
-  hora = hour + ':' + min; 
+  hora = hour + ':' + min;
   // Aqui se obtiene el valor del select
   let selectOptionsIf = document.getElementById('zonaIfOptions');
-  selectOptionsIf.addEventListener('click', function() {
+  selectOptionsIf.addEventListener('click', function () {
     let selectedZonaIf = this.options[selectOptionsIf.selectedIndex];
     console.log(selectedZonaIf.value);
   });
@@ -40,7 +40,7 @@ infoVisit.addEventListener('click', event => {
     rut: rut.value,
     nombre: nombre.value,
     apellido: apellido.value,
-  
+
   }; // Creamos un objecto con todos los elementos de nuestro formulario.
   saveContactForm(infoUsuarioIf); // Enviamos la información obtenida por el usuario a la función que se encargará de guardar la información en Firebase
   form.reset(); // Borramos todos los campos.
@@ -50,24 +50,25 @@ infoVisit.addEventListener('click', event => {
       .database()
       .ref('zonaIf')
       .push(infoUsuarioIf) // Hacemos referencia el nombre del objeto que contendrá nuestros registros y empujamos los nuevos envios de datos
-      .then(function() {
+      .then(function () {
         // alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
         console.info(Email);
-      
+
         Email.send('la.laboratoria@example.com',
           receiverEmail,
           'Visitante',
           'Hola, tiene un nuevo visitante :' + infoUsuarioIf.nombre + ' ' + infoUsuarioIf.apellido,
-          {token: 'f92c06af-db41-408f-87f2-b2190fa2bc84'
-          }); 
+          {
+            token: 'f92c06af-db41-408f-87f2-b2190fa2bc84'
+          });
         alert('Se ha enviado un aviso de su llegada'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
         alert('mensaje guardado'); // Si la petición es correcta y almaceno los datos mostramos un mensaje al usuario.
       })
-      .catch(function() {
+      .catch(function () {
         alert('No fue posible guardar su selección'); // En caso de ocurrir un error le mostramos al usuario que ocurrió un error.
       });
   }
-          
+
   // aqui evaluamos la ruta y se imprime en HTML
 
   firebase.database().ref('/zonaIf')
@@ -80,18 +81,20 @@ infoVisit.addEventListener('click', event => {
         .database()
         .ref('/zonaIf')
         .once('value', function datosIf(send) {
-          tblUsersList.innerHTML = ''; // se evita la repeticion de la visita
-
+           // se evita la repeticion de la visita
           Object.entries(send.val()).forEach(sends => {
-            tblUsersList.innerHTML += `  <tbody> <tr>
+            tblUsersList.innerHTML += ` 
+    <tbody> 
+    <tr>
        <td>  ${sends[1].rut}</td>
        <td>   ${sends[1].nombre}</td>
        <td>   ${sends[1].apellido}</td>
        <td>   ${sends[1].recinto}</td>
        <td>   ${sends[1].fecha}  </td>
-       <td>   ${sends[1].hora}</td>
-       </tbody>
-    </tr>`; 
+       <td>   ${sends[1].hora}</td>   
+    </tr>
+     </tbody>
+    `;
           });
         });
     });
